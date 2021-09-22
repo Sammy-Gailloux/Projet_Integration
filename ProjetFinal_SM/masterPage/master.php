@@ -33,14 +33,14 @@ echo <<<HTML
 
 		                <li> <a href="">Paiement</a> </li>
 
-		                <li><a href=">Nous contacter</a></li>
+		                <li><a href="">Nous contacter</a></li>
 
-				        <li><a href="about-us.html">À Propos</a></li>
+				        <li><a href="">À Propos</a></li>
 
             		</ul>
 				</nav>
 
-				$content;
+				$content
 
 				<!-- Footer -->
 				<footer id="footer">
