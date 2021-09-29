@@ -28,7 +28,7 @@ $content=<<<HTML
 							<header class="major">
 								<h2>À Propos De Nous</h2>
 							</header>
-							<p>Billetteie SM est un site web ...</p>
+							<p>Billetterie SM est un site web ...</p>
 							<ul class="actions">
 								<li><a href="about-us.html" class="button next">En apprendre plus</a></li>
 							</ul>
