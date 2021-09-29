@@ -31,7 +31,7 @@ echo <<<HTML
 					<ul class="links">
 		                <li class="active"> <a href="index.php">Accueil </a> </li>
 
-		                <li> <a href="">Evenement</a> </li>
+		                <li> <a href="">Événement</a> </li>
 
 		                <li> <a href="">Paiement</a> </li>
 
