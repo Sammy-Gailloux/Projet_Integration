@@ -17,7 +17,7 @@ echo <<<HTML
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>SM</span></a>
+					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
 						<a href="connexion.php">Connexion</a>
 						<a href="#menu">Menu</a>
@@ -29,7 +29,7 @@ echo <<<HTML
 					<ul class="links">
 		                <li class="active"> <a href="index.php">Accueil </a> </li>
 
-		                <li> <a href="">Evenement</a> </li>
+		                <li> <a href="">Événement</a> </li>
 
 		                <li> <a href="">Paiement</a> </li>
 
@@ -46,7 +46,7 @@ echo <<<HTML
 				<footer id="footer">
 					<div class="inner">
 						<ul class="copyright">
-							<li>Copyright © 2021 Billeterie SM - Mickael Bourdelais & Sammy Gailloux</li>
+							<li>Copyright © 2021 Billeterie Hard time tickets - Mickael Bourdelais & Sammy Gailloux</li>
 						</ul>
 					</div>
 				</footer>
