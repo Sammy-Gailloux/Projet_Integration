@@ -1,6 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json");
 echo <<<HTML
 <!DOCTYPE HTML>
 <html>
@@ -31,7 +29,7 @@ echo <<<HTML
 					<ul class="links">
 		                <li class="active"> <a href="index.php">Accueil </a> </li>
 
-		                <li> <a href="">Événement</a> </li>
+		                <li> <a href="">Evenement</a> </li>
 
 		                <li> <a href="">Paiement</a> </li>
 
