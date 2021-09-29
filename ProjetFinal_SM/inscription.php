@@ -35,5 +35,5 @@ $content=<<<HTML
 </div>
 HTML;
 
-	include "masterPage/master.php"
+	include "master.php";
 ?>
