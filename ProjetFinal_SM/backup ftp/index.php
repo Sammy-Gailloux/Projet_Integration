@@ -93,5 +93,6 @@ $content=<<<HTML
 </section>
 </div>
 HTML;
+
 	include "master.php";
 ?>
