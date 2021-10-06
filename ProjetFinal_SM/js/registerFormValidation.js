@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function(ev){
         }
       });
       email.addEventListener("blur", (e) => {
-        if (email.value.match(emailRegex) && email.value != null)emailValide = true;
+        if (email.value.match(emailRegex) && email.value != null){
+          emailValide = true;
+          console.log("test");
+        }
+        else console.log("marche pas");
       });
   });
