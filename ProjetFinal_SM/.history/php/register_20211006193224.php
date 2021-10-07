@@ -11,6 +11,11 @@
         $lastname = $_POST["lastName"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        echo $username;
+        echo $firstname;
+        echo $lastname;
+        echo $email;
+        echo $password;
         //$userAvailable = json_decode(SQLquery("CALL la procédure stocké(les params)"))->response;
         
         //if ($userAvailable == "0"){

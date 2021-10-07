@@ -11,6 +11,11 @@
         $lastname = $_POST["lastName"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        echo $username;
+        echo $firstname;
+        echo $lastname;
+        echo $email;
+        echo $password;
         //$userAvailable = json_decode(SQLquery("CALL la procédure stocké(les params)"))->response;
         
         //if ($userAvailable == "0"){
@@ -20,7 +25,7 @@
         //echo json_encode($availableArray);
 
         SQLExecute("CALL insertUser('$lastname', '$firstname', '$username', '$email', '$password')");
-        header("Location: ../index.php");
+        //header("Location: ../index.php");
         //if ($userAvailable == "0"){
         //    SQLExecute("CALL procédure stocké(params)");
         //    $availableArray = ["available"=>true];

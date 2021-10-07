@@ -1,6 +1,6 @@
 <?php
-    //header("Access-Control-Allow-Origin: *");
-    //header("Content-Type: application/json");
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json");
     include_once "sqlconn.php";
 
     //$availableArray = array();
@@ -11,16 +11,17 @@
         $lastname = $_POST["lastName"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+
         //$userAvailable = json_decode(SQLquery("CALL la procédure stocké(les params)"))->response;
         
-        //if ($userAvailable == "0"){
-        //    SQLExecute("CALL procédure stocké(params)");
-        //    $availableArray = ["available"=>true];
-        //}//else["available"=>false];
+        if ($userAvailable == "0"){
+            SQLExecute("CALL procédure stocké(params)");
+            $availableArray = ["available"=>true];
+        }//else["available"=>false];
         //echo json_encode($availableArray);
 
-        SQLExecute("CALL insertUser('$lastname', '$firstname', '$username', '$email', '$password')");
-        header("Location: ../index.php");
+        SQLExecute("CALL procédure insertUser('$lastname', '$firstname', '$username', '$email', '$password')");
+        //header("Location: ../index.php");
         //if ($userAvailable == "0"){
         //    SQLExecute("CALL procédure stocké(params)");
         //    $availableArray = ["available"=>true];
