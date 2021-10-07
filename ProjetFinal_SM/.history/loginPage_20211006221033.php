@@ -19,7 +19,7 @@ $content=<<<HTML
 <label><b>Mot de passe</b></label>
 <input type="password" placeholder="Entrer le mot de passe" name="mdp" required>
 <br>
-<input type="submit" id='submit' name="submit" value='Connexion' >
+<input type="submit" id='submit' name="" value='Connexion' >
 
 <p>Aucun compte? <a href="registerPage.php">Inscrivez-vous</a>.</p>
 </form>

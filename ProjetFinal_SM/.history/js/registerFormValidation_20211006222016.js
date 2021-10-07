@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(ev){ 
     document.querySelector("form").addEventListener("submit", function(ev){ 
       if (!userValide || !firstNameValide || !lastNameValide || !passwordValide || !emailValide)
+      console.log(userValide);
+      console.log(firstNameValide);
+      console.log(lastNameValide);
+      console.log(passwordValide);
+      console.log(emailValide);
+
         ev.preventDefault();
     }); 
   
@@ -32,12 +38,12 @@ document.addEventListener("DOMContentLoaded", function(ev){
             if (champ.name === "lastName")
               lastNameValide = true;           
           }
-          // else{
-          //   if (champ.name === "firstName")
-          //     firstNameValide = false;
-          //   if (champ.name === "lastName")
-          //     lastNameValide = false;   
-          // }
+          else{
+            if (champ.name === "firstName")
+              firstNameValide = false;
+            if (champ.name === "lastName")
+              lastNameValide = false;   
+          }
         });
       });
       password.addEventListener("blur", (e) => {

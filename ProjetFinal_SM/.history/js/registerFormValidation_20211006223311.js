@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(ev){ 
     document.querySelector("form").addEventListener("submit", function(ev){ 
       if (!userValide || !firstNameValide || !lastNameValide || !passwordValide || !emailValide)
+
         ev.preventDefault();
     }); 
   

@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(ev){ 
     document.querySelector("form").addEventListener("submit", function(ev){ 
       if (!userValide || !firstNameValide || !lastNameValide || !passwordValide || !emailValide)
+      console.log(userValide);
+      console.log(userValide);
+
         ev.preventDefault();
     }); 
   
@@ -11,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(ev){
       let lastNameValide = false;
       let passwordValide = false;
       userName.addEventListener("blur", (e) => {
-        if (userName.value.length >= 2 && userName.value.length <= 20)
+        if (userName.value.length >= 5 && userName.value.length <= 20)
           userValide = true; 
         else  
           userValide = false;
@@ -32,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function(ev){
             if (champ.name === "lastName")
               lastNameValide = true;           
           }
-          // else{
-          //   if (champ.name === "firstName")
-          //     firstNameValide = false;
-          //   if (champ.name === "lastName")
-          //     lastNameValide = false;   
-          // }
+          else{
+            if (champ.name === "firstName")
+              firstNameValide = false;
+            if (champ.name === "lastName")
+              lastNameValide = false;   
+          }
         });
       });
       password.addEventListener("blur", (e) => {
