@@ -11,7 +11,7 @@ $content=<<<HTML
 <h2>Connexion</h2>
 </header>   
 <p>Remplir le formulaire pour vous connecter</p>
-<form action="php/register.php" method="POST">
+<form action="php/login.php" method="POST">
 <label><b>Nom d'utilisateur</b></label>
 <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 

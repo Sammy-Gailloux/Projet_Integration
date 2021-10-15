@@ -7,10 +7,8 @@
         }
         return $mysqli;
     }
-    function ResponseToJson($resultat){
-    
-        $json_array = array();
-    
+    function ResponseToJson($resultat){   
+        $json_array = array();   
         while($row = mysqli_fetch_assoc($resultat)){
             $json_array[] = $row;
         }
