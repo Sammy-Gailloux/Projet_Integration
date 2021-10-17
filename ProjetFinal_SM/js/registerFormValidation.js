@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(ev){
       let lastNameValide = false;
       let passwordValide = false;
       userName.addEventListener("blur", (e) => {
-        if (userName.value.length >= 2 && userName.value.length <= 20)
+        if (userName.value.length >= 5 && userName.value.length <= 20)
           userValide = true; 
         else  
           userValide = false;
@@ -32,19 +32,25 @@ document.addEventListener("DOMContentLoaded", function(ev){
             if (champ.name === "lastName")
               lastNameValide = true;           
           }
-          // else{
-          //   if (champ.name === "firstName")
-          //     firstNameValide = false;
-          //   if (champ.name === "lastName")
-          //     lastNameValide = false;   
-          // }
+          else{
+            if (champ.name === "firstName")
+              firstNameValide = false;
+            if (champ.name === "lastName")
+              lastNameValide = false;   
+          }
         });
       });
       password.addEventListener("blur", (e) => {
-        if (password.value.length >= 6 && password.value.length <= 50)passwordValide = true;
+        if (password.value.length >= 6 && password.value.length <= 50){
+          passwordValide = true;
+          console.log(passwordValide);
+        }
       });
       email.addEventListener("blur", (e) => {
-        if (email.value.match(emailRegex) && email.value != null)emailValide = true;
+        if (email.value.match(emailRegex) && email.value != null){
+          emailValide = true;
+          console.log("test");
+        }
         else console.log("marche pas");
       });
   });

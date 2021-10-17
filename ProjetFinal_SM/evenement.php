@@ -58,7 +58,6 @@ HTML;
     
     }
     else{
-        header( "refresh:10;url=search.php");
 $content.=<<<HTML
 <h2 style="float:center">Aucun Resultat</h2>
 </div>
@@ -69,7 +68,7 @@ HTML;
 else{
     while($row = mysqli_fetch_array($result)) { 
         $num_evenement = $row["num_evenement"];
-        $nom = $row["nom_evenement"];
+        $nom = $row["nom_evenement"];	
         $photo = $row["photo"];
         $prix = $row["prix"];
 $content.=<<<HTML

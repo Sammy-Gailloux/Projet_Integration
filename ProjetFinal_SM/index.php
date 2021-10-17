@@ -39,58 +39,8 @@ $content=<<<HTML
 <div class="inner">
 <header class="major">
 <h2>Événements populaires</h2>
+<h3>À Venir</h3>
 </header>
-<section class="tiles">
-<article>
-<span class="image">
-<img src="images/Show1.jpg" alt="" />
-</span>
-<header class="major">
-<h3>The Weeknd</h3>
-
-<p><strong>$79.00</strong></p>
-
-<p>Concert de The Weeknd</p>
-
-<div class="major-actions">
-<a href="product-details.html" class="button small next">Détails</a>
-</div>
-</header>
-</article>
-<article>
-<span class="image">
-<img src="images/show2.png" alt="" />
-</span>
-<header class="major">
-<h3>Canadien De Montreal</h3>
-
-<p><strong>$179.00</strong></p>
-
-<p>Assister à la premiere partie du ch </p>
-
-<div class="major-actions">
-<a href="product-details.html" class="button small next">Détails</a>
-</div>
-</header>
-</article>
-<article>
-<span class="image">
-<img src="images/show3.jpg" alt="" />
-</span>
-<header class="major">
-<h3>LES BÂTISSEURS D’EMPIRE</h3>
-
-<p><del>$50.00</del> <strong> $35.00</strong></p>
-
-<p>Piece de theatre</p>
-
-<div class="major-actions">
-<a href="product-details.html" class="button small next">Détails</a>
-</div>
-</header>
-</article>
-								
-</section>
 </div>
 HTML;
 	include "master.php";

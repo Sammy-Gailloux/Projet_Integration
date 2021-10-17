@@ -27,6 +27,7 @@ $content=<<<HTML
 <!-- One -->
 <section id="one">
 <div class="inner">
+<a href="evenement.php"><h1><-Retour</h1></a>
 <header class="major">
 <h1>$nom</h1>
 </header>
