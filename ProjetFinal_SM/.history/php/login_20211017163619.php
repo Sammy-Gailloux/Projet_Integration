@@ -25,6 +25,6 @@ if (isset($_POST["submit"])){
     $alias = $_POST["alias"];
     $password = $_POST["password"];
 
-    loginUser($alias, $password);
+    loginUser($username, $password);
 }
 else header("location: ../index.php");

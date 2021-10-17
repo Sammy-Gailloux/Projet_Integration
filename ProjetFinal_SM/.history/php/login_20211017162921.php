@@ -3,8 +3,8 @@
 //header("Content-Type: application/json");
 include_once "sqlconn.php";
 
-function loginUser($alias, $password){
-    $userExist = json_decode(SQLquery("CALL loginCheck('$alias', '$password')"), true)[0];
+function loginUser($username, $password){
+    $userExist = json_decode(SQLquery("CALL loginCheck('$username', '$password')"), true);
     //var_dump($userExist);
     //echo $userExist[0]["prenom"];
     
@@ -15,16 +15,17 @@ function loginUser($alias, $password){
     }
     session_start();
     $_SESSION["userId"] = $userExist["num_utilisateur"];
-    $_SESSION["alias"] = $userExist["alias"];
-    //echo $_SESSION["userId"];
-    //echo $_SESSION["alias"];
-    header("location: ../index.php?success=goodlogin");
+    $_SESSION["username"] = $userExist["prenom".' '."nom"];
+    header("location: ../index.php?");
     exit();   
 }
 if (isset($_POST["submit"])){
-    $alias = $_POST["alias"];
+    $username = $_POST["userName"];
     $password = $_POST["password"];
+    
+    echo $_SESSION["userId"];
+    echo $_SESSION["username"];
 
-    loginUser($alias, $password);
+    loginUser($username, $password);
 }
 else header("location: ../index.php");

@@ -12,7 +12,7 @@ $content=<<<HTML
 </header>   
 <p>Remplir le formulaire pour vous connecter</p>
 <form action="php/login.php" method="POST">
-<label><b>Alias d'utilisateur</b></label>
+<label><b>alias d'utilisateur</b></label>
 <input type="text" placeholder="Entrer votre alias" name="alias" required>
 
 

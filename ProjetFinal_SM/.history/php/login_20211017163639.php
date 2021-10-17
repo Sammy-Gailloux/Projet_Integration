@@ -18,8 +18,8 @@ function loginUser($alias, $password){
     $_SESSION["alias"] = $userExist["alias"];
     //echo $_SESSION["userId"];
     //echo $_SESSION["alias"];
-    header("location: ../index.php?success=goodlogin");
-    exit();   
+    //header("location: ../index.php?success=goodlogin");
+    //exit();   
 }
 if (isset($_POST["submit"])){
     $alias = $_POST["alias"];

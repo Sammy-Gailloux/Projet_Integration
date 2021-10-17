@@ -16,8 +16,8 @@ function loginUser($alias, $password){
     session_start();
     $_SESSION["userId"] = $userExist["num_utilisateur"];
     $_SESSION["alias"] = $userExist["alias"];
-    //echo $_SESSION["userId"];
-    //echo $_SESSION["alias"];
+    echo $_SESSION["userId"];
+    echo $_SESSION["alias"];
     header("location: ../index.php?success=goodlogin");
     exit();   
 }
