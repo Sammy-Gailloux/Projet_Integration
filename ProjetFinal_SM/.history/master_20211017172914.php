@@ -1,5 +1,5 @@
 <?php
-session_start();
+session
 echo <<<HTML
 <!DOCTYPE HTML>
 <html>
@@ -20,6 +20,7 @@ echo <<<HTML
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
+						//fonction ici...
 						<a href="loginPage.php">Connexion</a>
 						<a href="#menu">Menu</a>
 						<a href="panier.php"><img src="images/panier.png" alt="" style="width:40px;"/></a>

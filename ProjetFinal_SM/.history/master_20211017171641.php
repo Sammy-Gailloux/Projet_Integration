@@ -1,6 +1,4 @@
-<?php
-session_start();
-echo <<<HTML
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -20,6 +18,7 @@ echo <<<HTML
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
+						<?php?>
 						<a href="loginPage.php">Connexion</a>
 						<a href="#menu">Menu</a>
 						<a href="panier.php"><img src="images/panier.png" alt="" style="width:40px;"/></a>
@@ -67,5 +66,3 @@ echo <<<HTML
 
 	</body>
 </html>
-HTML;
-?>

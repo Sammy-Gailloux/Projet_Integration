@@ -1,5 +1,5 @@
 <?php
-//$isLogged=;
+$isLogged=
 $title=<<<HTML
 <title>Accueil</title>
 HTML;
