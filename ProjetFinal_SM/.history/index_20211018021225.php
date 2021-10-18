@@ -1,4 +1,26 @@
 <?php
+session_start();
+$isLogged = function (){
+	if(isset($_SESSION["userId"])){
+		echo "<nav>";
+		echo "<a href='loginPage.php'>Connexion</a>";
+		echo "<a href='#menu'>Menu</a>";
+		echo "<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+	    echo "</nav>";
+	}
+	else{
+		echo "<nav>";
+		echo "<a href='loginPage.php'>Connexion</a>";
+		echo "<a href='#menu'>Menu</a>";
+		echo "<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+	    echo "</nav>";
+		echo "<nav>";
+		echo "<a href='profile.php'>Profil</a>";
+		echo "<a href='#menu'>Menu</a>";
+		echo "<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+	    echo "</nav>";
+	}
+};
 $title=<<<HTML
 <title>Accueil</title>
 HTML;

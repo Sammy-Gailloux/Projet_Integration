@@ -1,4 +1,22 @@
 <?php
+session_start();
+$isLogged = function (){
+	if(isset($_SESSION["userId"])){
+		return <<<HTML
+		<a href='profile.php'>Profil</a>;
+		<a href='#menu'>Menu</a>";
+		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>;
+		HTML;
+	}
+	else{
+		return <<<HTML
+		<a href='profile.php'>Profil</a>;
+		<a href='#menu'>Menu</a>";
+		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>;
+		HTML;
+		
+	}
+};
 $title=<<<HTML
 <title>Accueil</title>
 HTML;

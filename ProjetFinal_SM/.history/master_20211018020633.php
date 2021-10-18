@@ -1,18 +1,19 @@
 <?php
 session_start();
-$isLogged = function (){
+$isLogged = () =>{
 	if(isset($_SESSION["userId"])){
-		return <<<HTML
-		<a href='profile.php'>Profil</a>
-		<a href='#menu'>Menu</a>
-		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>
-		HTML;
+		echo "<nav>";
+		echo "<a href='loginPage.php'>Connexion</a>";
+		echo "<a href='#menu'>Menu</a>";
+		echo "<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+	    echo "</nav>";
 	}
 	else{
-		return <<<HTML
-		<a href='loginPage.php'>Connexion</a>
-		<a href='#menu'>Menu</a>
-		HTML;	
+		echo "<nav>";
+		echo "<a href='profile.php'>Profil</a>";
+		echo "<a href='#menu'>Menu</a>";
+		echo "<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+	    echo "</nav>";
 	}
 };
 echo <<<HTML
@@ -34,9 +35,7 @@ echo <<<HTML
 				<!-- Header -->
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
-					<nav>
-						{$isLogged()}
-					</nav>
+					{$isLogged}
 				</header>
 
 				<!-- Menu -->

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $title=<<<HTML
 <title>Accueil</title>
 HTML;
