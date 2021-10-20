@@ -1,5 +1,21 @@
 <?php
-include_once "../php/index.php";
+session_start();
+$isLogged = function (){
+	if(isset($_SESSION["userId"])){
+		return <<<HTML
+		<a href='#menu'>Menu</a>
+		<a href='php/logout.php'>Déconnexion</a>
+		<a href='php/profile.php'>{$_SESSION["alias"]}</a>
+		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>
+		HTML;
+	}
+	else{
+		return <<<HTML
+		<a href='loginPage.php'>Connexion</a>
+		<a href='#menu'>Menu</a>
+		HTML;	
+	}
+};
 echo <<<HTML
 <!DOCTYPE HTML>
 <html>
@@ -20,17 +36,16 @@ echo <<<HTML
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
-						<a href="php/connexion.php">Connexion</a>
-						<a href="#menu">Menu</a>
+						{$isLogged()}
 					</nav>
 				</header>
 
 				<!-- Menu -->
 				<nav id="menu">
 					<ul class="links">
-		                <li class="active"> <a href="../php/index.php">Accueil </a> </li>
+		                <li class="active"> <a href="index.php">Accueil </a> </li>
 
-		                <li> <a href="">Événement</a> </li>
+		                <li> <a href="evenement.php">Événement</a> </li>
 
 		                <li> <a href="">Paiement</a> </li>
 
@@ -67,4 +82,3 @@ echo <<<HTML
 	</body>
 </html>
 HTML;
-?>

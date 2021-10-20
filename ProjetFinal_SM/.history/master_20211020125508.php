@@ -1,4 +1,21 @@
 <?php
+session_start();
+$isLogged = function (){
+	if(isset($_SESSION["userId"])){
+		return <<<HTML
+		<a href='#menu'>Menu</a>
+		<a href='php/logout.php'>Déconnexion</a>
+		<a href='php/profile.php'>{$_SESSION["alias"]}</a>
+		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>
+		HTML;
+	}
+	else{
+		return <<<HTML
+		<a href='loginPage.php'>Connexion</a>
+		<a href='#menu'>Menu</a>
+		HTML;	
+	}
+};
 echo <<<HTML
 <!DOCTYPE HTML>
 <html>
@@ -19,9 +36,7 @@ echo <<<HTML
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
-						<a href="connexion.php">Connexion</a>
-						<a href="#menu">Menu</a>
-						<a href="panier.php"><img src="images/panier.png" alt="" style="width:40px;"/></a>
+						{$isLogged()}
 					</nav>
 				</header>
 
@@ -67,4 +82,3 @@ echo <<<HTML
 	</body>
 </html>
 HTML;
-?>
