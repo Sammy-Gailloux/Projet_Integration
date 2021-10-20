@@ -14,7 +14,7 @@ function loginUser($alias, $password){
     session_start();
     $_SESSION["userId"] = $userExist["num_utilisateur"];
     $_SESSION["alias"] = $userExist["alias"];
-    header("location: ../index.php");
+    header("location: ../index.php?login=success");
     exit();   
 }
 if (isset($_POST["submit"])){

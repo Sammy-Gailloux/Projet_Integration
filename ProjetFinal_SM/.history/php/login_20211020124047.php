@@ -5,6 +5,8 @@ include_once "sqlconn.php";
 
 function loginUser($alias, $password){
     $userExist = json_decode(SQLquery("CALL loginCheck('$alias', '$password')"), true)[0];
+    //var_dump($userExist);
+    //echo $userExist[0]["prenom"];
     
     if($userExist == null){
         echo "test";
@@ -14,7 +16,9 @@ function loginUser($alias, $password){
     session_start();
     $_SESSION["userId"] = $userExist["num_utilisateur"];
     $_SESSION["alias"] = $userExist["alias"];
-    header("location: ../index.php");
+    //echo $_SESSION["userId"];
+    //echo $_SESSION["alias"];
+    header("location: ../index.php?login=success");
     exit();   
 }
 if (isset($_POST["submit"])){

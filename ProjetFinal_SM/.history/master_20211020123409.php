@@ -3,9 +3,8 @@ session_start();
 $isLogged = function (){
 	if(isset($_SESSION["userId"])){
 		return <<<HTML
+		<a href='profile.php'>{$_SESSION["alias"]}</a>
 		<a href='#menu'>Menu</a>
-		<a href='php/logout.php'>Déconnexion</a>
-		<a href='php/profile.php'>{$_SESSION["alias"]}</a>
 		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>
 		HTML;
 	}
