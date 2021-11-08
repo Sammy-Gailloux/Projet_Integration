@@ -1,6 +1,6 @@
 <?php
 require_once "bdConnect.php";
-
+session_start();
 $title=<<<HTML
 <title>Details</title>
 HTML;

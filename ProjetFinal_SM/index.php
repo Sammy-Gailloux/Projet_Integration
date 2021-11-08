@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title=<<<HTML
 <title>Accueil</title>
 HTML;
@@ -26,7 +27,7 @@ $content=<<<HTML
 <section>
 <div class="inner">
 <header class="major">
-<h2>À Propos De Nous</h2>
+<h2>À propos de nous</h2>
 </header>
 <p>Billetterie HTT est un site web ...</p>
 <ul class="actions">

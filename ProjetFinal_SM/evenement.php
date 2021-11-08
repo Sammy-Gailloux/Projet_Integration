@@ -1,7 +1,19 @@
 <?php
+session_start();
+$logged = function ($num){
+	if(isset($_SESSION["userId"])){
+		return 
+		"<a href='details.php?id=$num' class='button small next'>Détails</a>
+        <a href='achat.php?id=$num' class='button small next'>Acheter</a>";
+	}
+	else{
+		return
+		"<a href='details.php?id=$num' class='button small next'>Détails</a>";
+	}
+};
+
 ini_set('memory_limit','128M');
 require_once "bdConnect.php";
-
 $title=<<<HTML
 <title>Evenements</title>
 HTML;
@@ -48,7 +60,7 @@ $content.=<<<HTML
 <h3>$nom</h3>
 <p><strong>$prix $</strong></p>
 <div class="major-actions">
-<a href="details.php?id=$num_evenement" class="button small next">Détails</a>
+{$logged($num_evenement)}
 </div>
 </header>
 </article>
@@ -80,7 +92,7 @@ $content.=<<<HTML
 <h3>$nom</h3>
 <p><strong>$prix $</strong></p>
 <div class="major-actions">
-<a href="details.php?id=$num_evenement" class="button small next">Détails</a>
+{$logged($num_evenement)}
 </div>
 </header>
 </article>
