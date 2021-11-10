@@ -1,5 +1,4 @@
 <?php
-session_start();
 $title=<<<HTML
 <title>Accueil</title>
 HTML;
@@ -8,7 +7,7 @@ $content=<<<HTML
 <section id="banner" class="major">
 <div class="inner">
 <header class="major">
-<h1>Acheter des billets le plus simplement possible</h1>
+<h1>L'achat de billet simplifié</h1>
 </header>
 <div class="content">
 <p>Vous avez des questions pour nous?</p>
@@ -29,7 +28,7 @@ $content=<<<HTML
 <header class="major">
 <h2>À Propos De Nous</h2>
 </header>
-<p>Billetteie SM est un site web ...</p>
+<p>Billetterie HTT est un site web ...</p>
 <ul class="actions">
 <li><a href="about-us.html" class="button next">En apprendre plus</a></li>
 </ul>
@@ -39,7 +38,7 @@ $content=<<<HTML
 <!-- Featured Products -->
 <div class="inner">
 <header class="major">
-<h2>Evenements populaires</h2>
+<h2>Événements populaires</h2>
 </header>
 <section class="tiles">
 <article>
@@ -54,7 +53,7 @@ $content=<<<HTML
 <p>Concert de The Weeknd</p>
 
 <div class="major-actions">
-<a href="product-details.html" class="button small next">Details</a>
+<a href="product-details.html" class="button small next">Détails</a>
 </div>
 </header>
 </article>
@@ -70,7 +69,7 @@ $content=<<<HTML
 <p>Assister à la premiere partie du ch </p>
 
 <div class="major-actions">
-<a href="product-details.html" class="button small next">Details</a>
+<a href="product-details.html" class="button small next">Détails</a>
 </div>
 </header>
 </article>
@@ -86,7 +85,7 @@ $content=<<<HTML
 <p>Piece de theatre</p>
 
 <div class="major-actions">
-<a href="product-details.html" class="button small next">Details</a>
+<a href="product-details.html" class="button small next">Détails</a>
 </div>
 </header>
 </article>
@@ -94,5 +93,6 @@ $content=<<<HTML
 </section>
 </div>
 HTML;
+
 	include "master.php";
 ?>
