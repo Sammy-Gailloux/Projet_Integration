@@ -68,7 +68,14 @@ if (isset($_GET["action"])) {
 		            } 
 
                 }
+                $getMail = "SELECT * from HTDB.utilisateurs WHERE num_utilisateur = $loggeduserid";
+                $result = mysqli_query($conn,$getMail);
+                $courriel = mysqli_fetch_array($result);
 
+                $msg = "First line of text\nSecond line of text";
+                $msg = wordwrap($msg,70);
+                mail($courriel["courriel"],"My subject",$msg);
+                echo $courriel["courriel"];
             } else {
                 echo 'Pas assez dargent';
                 echo '<script>window.location="panier.php"</script>';
@@ -88,10 +95,10 @@ $content=<<<HTML
 <!-- Main -->
 <div id="main">
 					
-					
 <!-- About us -->
-<section>
+<section id="test">
 <div class="inner">
+<div class="flex-child ">
 <header class="major">
 <h2>Panier</h2>
 </header>
@@ -103,7 +110,6 @@ $content=<<<HTML
 <th width="15%">Section</th>
 <th width="10%">Quantite de billet</th>
 <th width="13%">Prix d'un billet</th>
-<th width="10%">Prix total</th>
 <th width="17%">Supprimer le billet</th>
 </tr>
 HTML;
@@ -160,14 +166,9 @@ $content .= $row["prix"] * $row["fm_prix"];
 $content .= <<<HTML
 </td>
 <td>
-$ 
 HTML;
     
-$content .= number_format($row["quantite_billet"] * $row["prix"] *$row["fm_prix"], 2); 
-$content .= <<<HTML
-</td>
-<td>
-HTML;
+
     
 $content .= <<<HTML
 <a href="achat.php?action=delete&id=$test">
@@ -194,23 +195,18 @@ if(isset($_POST['submit'])){
 
 $content .= <<<HTML
 <tr>
-<td colspan="3" align="right">Votre Solde</td>
-<th align="right">$ 
 HTML;
 
 
 $sqlcmd = "SELECT * FROM HTDB.utilisateurs WHERE num_utilisateur = $loggeduserid";
 $result = mysqli_query($conn, $sqlcmd);
 while ($qte = $result->fetch_assoc())
-$content .= $qte["montant"]; 
 $content .= <<<HTML
 </tr>
 <tr>
-<td colspan="3" align="right">Total</td>
-<th align="right">$ 
 HTML;
+$totalCout = number_format($total, 2); 
 
-$content .= number_format($total, 2); 
 
 $SqlPanier = "SELECT * from HTDB.panier where num_utilisateur = $loggeduserid";
 $resultSqlPanier = mysqli_query($conn, $SqlPanier);
@@ -220,18 +216,46 @@ $content .= <<<HTML
 </tr>
 </table>
 </div>
+</div>
+
 </section>
 HTML;
 }
 else{
 $content .= <<<HTML
-<a href="panier.php?action=pay">Payer</a></th>
 </tr>
 </table>
 </div>
-</section>
+</div>
+<div class="flex-child allo">
+<header style="text-align: center;">
+<h1>Payer</h1>    
+</header>
+<p>Total : $totalCout $</p>
+<form action="panier.php?action=pay" method="POST">
+<div class="card-header">
+<div class="row">
+<div class="col-md-6"> <span>Carte de crédit</span> </div>  
+<div class="col-md-6 text-right" style="margin-top: -5px;"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img src="https://img.icons8.com/color/36/000000/mastercard.png"> <img src="https://img.icons8.com/color/36/000000/amex.png"> </div>
+</div>
+</div>
+<div class="card-body" style="height: 350px">
+<div class="form-group"> <label for="cc-number" class="control-label">Numéro de carte</label> <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required> </div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group"> <label for="cc-exp" class="control-label">E    xpiration</label> <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
+</div>
+<div class="col-md-6">
+<div class="form-group"> <label for="cc-cvc" class="control-label">CVV</label> <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
+</div>
+</div>
+<div class="form-group"> <label for="numeric" class="control-label">Nom du détenteur</label> <input type="text" class="input-lg form-control"> </div>
+<div class="form-group"> <input value="Paiement" type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"> </div>
+</div>
+</form>     
+</div>
+</section>  
 HTML;
 }
-
 include "master.php";
 ?>
