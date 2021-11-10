@@ -10,6 +10,9 @@ if (isset($_POST["submit"])) {
     $newPassword = $_POST["newPassword"];
 
     SQLExecute("CALL modifyUser('$oldPassword', '$newLastname', '$newFirstname', '$newUsername', '$newEmail', '$newPassword')");
+    ///////////////////////////////////////////////////////////////////
+    //Pas sécuritaire car on peut voir certain nom de colonne de la bd
+    ///////////////////////////////////////////////////////////////////
     $userExist = json_decode(SQLquery("CALL loginCheck('$newUsername', '$newPassword')"), true)[0];
     $_SESSION["alias"] = $userExist["alias"];
     $_SESSION["userId"] = $userExist["num_utilisateur"];
