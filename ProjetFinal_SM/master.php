@@ -1,10 +1,12 @@
 <?php
+
+
 $isLogged = function (){
 	if(isset($_SESSION["userId"])){
 		return 
 		"<a href='#menu'>Menu</a>
 		<a href='php/logout.php'>Déconnexion</a>
-		<a href='profilePage.php'>{$_SESSION["alias"]}</a>
+		<a href='php/profile.php'>{$_SESSION["alias"]}</a>
 		<a href='inventaire.php'>Inventaire</a>
 		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
 	}
@@ -40,8 +42,7 @@ echo <<<HTML
 					<ul class="links">
 		                <li class="active"> <a href="index.php">Accueil </a> </li>
 		                <li> <a href="evenement.php">Événement</a> </li>
-		                <li> <a href="">Paiement</a> </li>
-		                <li><a href="">Nous contacter</a></li>
+		                <li> <a href="panier.php">Paiement</a> </li>
 				        <li><a href="">À propos</a></li>
             		</ul>
 				</nav>
@@ -56,6 +57,7 @@ echo <<<HTML
 				</footer>
 			</div>
 		<!-- Scripts -->
+			<script type="text/javascript" src="js/payment.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -66,5 +68,5 @@ echo <<<HTML
 			<script src="assets/js/main.js"></script>
 	</body>
 </html>
-HTML;
+HTML;	
 ?>
