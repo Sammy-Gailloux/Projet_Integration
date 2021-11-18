@@ -5,6 +5,7 @@ include_once "sqlconn.php";
 
 function loginUser($alias, $password){
     $userExist = json_decode(SQLquery("CALL loginCheck('$alias', '$password')"), true)[0];
+    include "logout.php";
     if($userExist == null){
         echo "test";
         header("location: ../loginPage.php?error=wronglogin");

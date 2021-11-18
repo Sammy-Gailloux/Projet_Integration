@@ -2,18 +2,43 @@
 
 
 $isLogged = function (){
-	if(isset($_SESSION["userId"])){
-		return 
-		"<a href='#menu'>Menu</a>
+	if(isset($_SESSION["admin"])){
+		$menu = "<ul class='links'>
+		<li class='active'> <a href='index.php'>Accueil </a> </li>
+		<li><a href='evenement.php'>Événement</a> </li>
+		<li><a href=''>Nous contacter</a></li>
+		<li><a href=''>À propos</a></li>
+		</ul>";
+		$info = "<a href='php/logout.php'>Déconnexion</a>";
+		return [$info, $menu];
+	}
+	else if(isset($_SESSION["userId"])){
+		$menu = '<ul class="links">
+		<li class="active"> <a href="index.php">Accueil </a> </li>
+		<li> <a href="evenement.php">Événement</a> </li>
+		<li> <a href="">Paiement</a> </li>
+		<li><a href="">Nous contacter</a></li>
+		<li><a href="">À propos</a></li>
+		</ul>';
+		$info = "
 		<a href='php/logout.php'>Déconnexion</a>
 		<a href='php/profile.php'>{$_SESSION["alias"]}</a>
 		<a href='inventaire.php'>Inventaire</a>
 		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
+		return [$info, $menu];
 	}
+	
 	else{
-		return
-		"<a href='loginPage.php'>Connexion</a>
-		<a href='#menu'>Menu</a>";
+		$menu = '
+		<ul class="links">
+		<li class="active"> <a href="index.php">Accueil </a> </li>
+		<li> <a href="evenement.php">Événement</a> </li>
+		<li> <a href="">Paiement</a> </li>
+		<li><a href="">Nous contacter</a></li>
+		<li><a href="">À propos</a></li>
+		</ul>';
+		$info = "<a href='loginPage.php'>Connexion</a>";
+		return [$info, $menu];
 	}
 };
 echo <<<HTML
@@ -34,17 +59,20 @@ echo <<<HTML
 				<header id="header" class="alt">
 					<a href="index.php" class="logo"><strong>Billetterie</strong> <span>Hard time tickets</span></a>
 					<nav>
-						{$isLogged()}
+						{$isLogged()[0]}
+						<a href='#menu'>Menu</a>
 					</nav>
 				</header>
 				<!-- Menu -->
+				
 				<nav id="menu">
-					<ul class="links">
+					{$isLogged()[1]}
+					<!-- <ul class="links">
 		                <li class="active"> <a href="index.php">Accueil </a> </li>
 		                <li> <a href="evenement.php">Événement</a> </li>
 		                <li> <a href="panier.php">Paiement</a> </li>
 				        <li><a href="">À propos</a></li>
-            		</ul>
+            		</ul> -->
 				</nav>
 				$content
 				<!-- Footer -->
