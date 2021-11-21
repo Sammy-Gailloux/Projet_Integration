@@ -6,6 +6,24 @@ $title=<<<HTML
 HTML;
 $total = 0;
 $loggeduserid = $_SESSION["userId"];
+$pourcent = 0;
+
+if (isset($_GET["action"])) {
+    if ($_GET["action"] == "rabais") {
+        $codeEntrer = $_POST["code"];
+
+        $GetCouponName = "SELECT * from rabais where nom_rabais = '{$codeEntrer}'";
+        $CouponQuery = mysqli_query($conn, $GetCouponName);
+        $Coupon = mysqli_fetch_assoc($CouponQuery);
+
+        if ($Coupon["nom_rabais"] == $codeEntrer)
+        {
+            $pourcent = $Coupon["pourcentage"];
+        } 
+        else{
+        } 
+    } 
+} 
 
 //PAYER LE PANIER
 
@@ -40,7 +58,22 @@ if (isset($_GET["action"])) {
                 echo "Error: " . $sql . "
             " . mysqli_error($conn);
             }
+//------------------------MAIL----------------------------------------------------------------------
+            $getMail = "SELECT * from HTDB.utilisateurs inner join HTDB.panier on HTDB.utilisateurs.num_utilisateur = HTDB.panier.num_utilisateur
+            inner join HTDB.evenements on HTDB.panier.num_evenement = HTDB.evenements.num_evenement
+            inner join HTDB.representation on HTDB.evenements.num_evenement = HTDB.representation.num_evenement
+            inner join HTDB.lieux on HTDB.representation.num_lieux = HTDB.lieux.num_lieux
+            WHERE HTDB.utilisateurs.num_utilisateur = $loggeduserid";
+            $result = mysqli_query($conn,$getMail);
+            $courriel = mysqli_fetch_array($result);
 
+            $msg = "Bonjour {$courriel["prenom"]},\nMerci d'avoir commander sur La Billetterie Hard Time Tickets!\n
+            Voici vos achats:\n
+            - {$courriel["quantite_billet"]} pour l'evenements : {$courriel["nom_evenement"]} le {$courriel["date"]} à/au {$courriel["nom_lieux"]}";
+
+            $msg = wordwrap($msg,70);
+            mail($courriel["courriel"],"My subject",$msg);
+//---------------------------------------------------------------------------------------------------
             $sqlGet = "SELECT num_evenement FROM inventaire_utilisateur WHERE num_evenement=". $followingdata["num_evenement"] . " and num_utilisateur='$loggeduserid' and num_section =". $followingdata["num_section"];
             $result = mysqli_query($conn,$sqlGet);
 
@@ -80,14 +113,6 @@ if (isset($_GET["action"])) {
                 } 
 
             }
-            $getMail = "SELECT * from HTDB.utilisateurs WHERE num_utilisateur = $loggeduserid";
-            $result = mysqli_query($conn,$getMail);
-            $courriel = mysqli_fetch_array($result);
-
-            $msg = "Bonjour {$courriel["nom"]},\n Merci d'avoir commander sur La Billetterie Hard Time Tickets!\n
-                    Voici vos achats:\n";
-            $msg = wordwrap($msg,70);
-            mail($courriel["courriel"],"My subject",$msg);
         }
         else{
             echo "<script type='text/javascript'>alert('Carte De Credit Non Valide');</script>";
@@ -194,6 +219,8 @@ $content .= <<<HTML
 HTML;
 
     $total = $total + ($row["quantite_billet"] * $row["prix"]*$row["fm_prix"]);
+    $new = $total - $total * ($pourcent/100);
+    $totalCout = number_format($new, 2); 
 }
 if(isset($_POST['submit'])){
     if(!empty($_POST['quantite'])) {
@@ -201,7 +228,6 @@ if(isset($_POST['submit'])){
         $_SESSION["qte"]=$selected;
         echo $selected;
     } else {
-        echo 'Please select the value.';
     }
     }
 
@@ -217,7 +243,6 @@ $content .= <<<HTML
 </tr>
 <tr>
 HTML;
-$totalCout = number_format($total, 2); 
 
 
 $SqlPanier = "SELECT * from HTDB.panier where num_utilisateur = $loggeduserid";
@@ -242,7 +267,13 @@ $content .= <<<HTML
 <div class="flex-child allo">
 <header style="text-align: center;">
 <h1>Payer</h1>    
+<form action="panier.php?action=rabais" method="POST">
+<label for="codee" class="control-label">Coupon Rabais</label> <input type="text" style=" text-align: center; " name="code" id="codee"  autocomplete="off" required>
+<p style="font-size:15px;">*15% de rabais avec le code "Htt15"*</p>
+<input value="Appliquer" type="submit" style="font-size: .8rem;">
+</form> 
 </header>
+
 <p>Total : $totalCout $</p>
 <form action="panier.php?action=pay" method="POST">
 <div class="card-header">
@@ -252,17 +283,15 @@ $content .= <<<HTML
 </div>
 </div>
 <div class="card-body" style="height: 350px">
-<div class="form-group"> <label for="cc-number" class="control-label">Numéro de carte</label> <input name="numCarte" id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" maxlength="19" pattern="[0-9\s]{13,19}" placeholder="•••• •••• •••• ••••" required> </div>
+<div class="form-group"> <label for="cc-number" class="control-label">Numéro de carte</label> <input style=" text-align: center;" name="numCarte" id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" maxlength="19" pattern="[0-9\s]{13,19}" placeholder="•••• •••• •••• ••••" required> </div>
 <div class="row">
 <div class="col-md-6">
-<div class="form-group"> <label for="cc-exp" class="control-label">Expiration</label> <input name="exp" id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" maxlength="5" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" placeholder="••/••" required> </div>
+<div class="form-group"> <label for="cc-exp" class="control-label">Expiration</label> <input style=" text-align: center;" name="exp" id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" maxlength="5" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" placeholder="••/••" required> </div>
 </div>
 <div class="col-md-6">
-<div class="form-group"> <label for="cc-cvc" class="control-label">CVV</label> <input name="cvv" id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" maxlength="3" pattern="^\d{1,3}$" placeholder="•••" required> </div>
+<div class="form-group"> <label for="cc-cvc" class="control-label">CVV</label> <input style=" text-align: center;" name="cvv" id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" maxlength="3" pattern="^\d{1,3}$" placeholder="•••" required> </div>
 </div>
-<div class="col-md-6">
-<div class="form-group"> <label for="code" class="control-label">Coupon Rabais</label> <input id="code" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••••"> </div>
-</div>
+
 </div>
 <div class="form-group"> <input value="Paiement" type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"> </div>
 </div>
