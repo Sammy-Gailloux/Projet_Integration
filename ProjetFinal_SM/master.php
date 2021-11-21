@@ -1,6 +1,6 @@
 <?php
 $isLogged = function (){
-	if(isset($_SESSION["admin"])){
+	if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 		$menu = "<ul class='links'>
 		<li class='active'> <a href='index.php'>Accueil </a> </li>
 		<li><a href='evenement.php'>Événement</a> </li>
@@ -24,8 +24,7 @@ $isLogged = function (){
 		<a href='inventaire.php'>Inventaire</a>
 		<a href='panier.php'><img src='images/panier.png' alt='' style='width:40px;'/></a>";
 		return [$info, $menu];
-	}
-	
+	}	
 	else{
 		$menu = '
 		<ul class="links">
